@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPortal - Редактор</title>
+    <link rel="stylesheet" href="../css/editor.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-text"><span style="color: rgb(49, 142, 255);">Blog</span> Portal</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="editor-page">
+        <div class="editor-container">
+            
+            <h1 class="editor-title-page">Новая статья</h1>
+
+            <form id="editor-form">
+                <input type="hidden" id="post-id" value="">
+
+                <div class="editor-field">
+                    <label>Заголовок</label>
+                    <input type="text" id="post-title" placeholder="Заголовок статьи" required>
+                </div>
+
+                <div class="editor-meta">
+                    <div class="editor-field">
+                        <label>Категория</label>
+                        <select id="post-category" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="Программирование">Программирование</option>
+                            <option value="Дизайн">Дизайн</option>
+                            <option value="Технологии">Технологии</option>
+                            <option value="Наука">Наука</option>
+                            <option value="Бизнес">Бизнес</option>
+                            <option value="Образование">Образование</option>
+                            <option value="Путешествия">Путешествия</option>
+                            <option value="Здоровье">Здоровье</option>
+                            <option value="Кулинария">Кулинария</option>
+                            <option value="Спорт">Спорт</option>
+                            <option value="Игры">Игры</option>
+                            <option value="Кино">Кино</option>
+                            <option value="Музыка">Музыка</option>
+                    </select>
+                    </div>
+                    <div class="editor-field">
+                        <label>Теги (через запятую)</label>
+                        <input type="text" id="post-tags" placeholder="javascript, обучение">
+                    </div>
+                    <div class="editor-field">
+                        <label>URL обложки</label>
+                        <input type="text" id="post-image" placeholder="https://...">
+                    </div>
+                </div>
+
+                <div class="editor-field">
+                    <label>Краткое описание</label>
+                    <input type="text" id="post-excerpt" placeholder="Краткое описание (до 200 символов)">
+                </div>
+
+                <div class="editor-field">
+                    <label>Содержание</label>
+                    <textarea id="post-content" placeholder="Начните писать статью..." required></textarea>
+                </div>
+
+                <div class="editor-actions">
+                    <button type="button" id="btn-draft" class="btn-save-draft">Сохранить черновик</button>
+                    <button type="button" id="btn-submit" class="btn-submit-review">Отправить на модерацию</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Blog Portal. Все права защищены.</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/editor.js"></script>
+</body>
+</html>

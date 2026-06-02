@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPortal - Модерация</title>
+    <link rel="stylesheet" href="../css/moderation.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-text"><span style="color: rgb(49, 142, 255);">Blog</span> Portal</span>
+            </a>
+            <nav class="moderation-nav">
+                <a href="index.html">Главная</a>
+                <a href="profile.html">Профиль</a>
+                <a href="moderation.html" class="active">Модерация</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="moderation-container">
+            <h1 class="section-title">Панель модерации</h1>
+            
+            <div class="moderation-tabs">
+                <button class="mod-tab active" onclick="filterPosts('review')">На проверке</button>
+                <button class="mod-tab" onclick="filterPosts('published')">Опубликованные</button>
+            </div>
+
+            <div class="moderation-list"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Blog Portal. Все права защищены.</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/moderation.js"></script>
+</body>
+</html>

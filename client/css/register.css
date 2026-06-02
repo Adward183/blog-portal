@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* ==================== */
+/* HEADER                */
+/* ==================== */
+
+header {
+    background: #fff;
+    border-bottom: 1px solid rgb(134, 134, 134);
+    box-shadow: 0 2px 4px rgba(76, 76, 76, 0.1);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+/* ==================== */
+/* ФОРМА РЕГИСТРАЦИИ     */
+/* ==================== */
+
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 40px 20px;
+}
+
+.auth-box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 35px 30px;
+    width: 400px;
+    max-width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border: 1px solid #ddd;
+}
+
+.auth-title {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #318eff;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background: #318eff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: rgb(30, 100, 200);
+}
+
+.auth-link {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+}
+
+.auth-link a {
+    color: #318eff;
+    transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* ==================== */
+/* TOAST                 */
+/* ==================== */
+
+.toast-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 14px 24px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.toast-show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-success {
+    background: #28a745;
+}
+
+.toast-error {
+    background: #dc3545;
+}
+
+/* ==================== */
+/* FOOTER                */
+/* ==================== */
+
+footer {
+    background: #fff;
+    border-top: 1px solid rgb(134, 134, 134);
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 14px;
+    color: #888;
+}

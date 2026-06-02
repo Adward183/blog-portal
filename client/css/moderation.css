@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* ==================== */
+/* HEADER                */
+/* ==================== */
+
+header {
+    background: #fff;
+    border-bottom: 1px solid rgb(134, 134, 134);
+    box-shadow: 0 2px 4px rgba(76, 76, 76, 0.1);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.moderation-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.moderation-nav a {
+    color: #555;
+    font-size: 15px;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.moderation-nav a:hover,
+.moderation-nav a.active {
+    color: #318eff;
+    border-bottom-color: #318eff;
+}
+
+/* ==================== */
+/* МОДЕРАЦИЯ             */
+/* ==================== */
+
+.moderation-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+    flex: 1;
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #1a1a2e;
+}
+
+.moderation-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    background: #e9ecef;
+    border-radius: 8px;
+    padding: 3px;
+    width: fit-content;
+}
+
+.mod-tab {
+    padding: 8px 18px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.mod-tab.active {
+    background: #fff;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.moderation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.moderation-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.moderation-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.status-review {
+    background: #fff3cd;
+    color: #856404;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.status-published {
+    background: #d4edda;
+    color: #155724;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.post-date {
+    font-size: 13px;
+    color: #999;
+}
+
+.moderation-post-title {
+    display: block;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #1a1a2e;
+    transition: color 0.3s ease;
+}
+
+.moderation-post-title:hover {
+    color: #318eff;
+}
+
+.moderation-post-excerpt {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.moderation-post-meta {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 18px;
+    display: flex;
+    gap: 20px;
+}
+
+.moderation-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-approve {
+    padding: 10px 20px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-approve:hover {
+    background: #218838;
+}
+
+.btn-reject {
+    padding: 10px 20px;
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reject:hover {
+    background: #c82333;
+}
+
+.no-items {
+    text-align: center;
+    color: #999;
+    padding: 50px;
+    font-size: 16px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* ==================== */
+/* FOOTER                */
+/* ==================== */
+
+footer {
+    background: #fff;
+    border-top: 1px solid rgb(134, 134, 134);
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 14px;
+    color: #888;
+}

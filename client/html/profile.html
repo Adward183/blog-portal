@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPortal - Профиль</title>
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-text"><span style="color: rgb(49, 142, 255);">Blog</span> Portal</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="profile-page">
+        
+        <div class="profile-header" id="profile-view">
+            <img src="" alt="Аватар" class="profile-avatar">
+            <div class="profile-info">
+                <span class="profile-name">...</span>
+                <span class="profile-email">...</span>
+                <span class="profile-role">...</span>
+                <span class="profile-date">...</span>
+                <p class="profile-bio"></p>
+            </div>
+            <div>
+                <a href="editor.html" class="btn-write" style="display:none;">Написать статью</a>
+                <button class="btn-edit-profile" id="btn-edit-profile" style="margin-top:10px;">Редактировать</button>
+            </div>
+        </div>
+
+        <div class="profile-header" id="profile-edit" style="display:none;">
+            <form id="profile-edit-form" style="width:100%;">
+                <div class="form-group">
+                    <label>Имя пользователя</label>
+                    <input type="text" id="edit-username" required>
+                </div>
+                <div class="form-group">
+                    <label>О себе</label>
+                    <input type="text" id="edit-bio" placeholder="Расскажите о себе">
+                </div>
+                <div class="form-group">
+                    <label>URL аватара</label>
+                    <input type="text" id="edit-avatar" placeholder="">
+                </div>
+                <div style="display:flex;gap:10px;">
+                    <button type="submit" class="btn-save">Сохранить</button>
+                    <button type="button" id="btn-cancel-edit" class="btn-cancel">Отмена</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="profile-stats">
+            <div class="stat-item">
+                <span class="stat-number stat-articles">0</span>
+                <span class="stat-label">Статей</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number stat-views">0 </span>
+                <span class="stat-label">Просмотров</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number stat-comments">0</span>
+                <span class="stat-label">Комментариев</span>
+            </div>
+        </div>
+
+        <div class="profile-articles">
+            <h2 class="section-title">Мои статьи</h2>
+            <div class="profile-articles-list"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Blog Portal. Все права защищены.</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

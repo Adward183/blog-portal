@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPortal - Статья</title>
+    <link rel="stylesheet" href="../css/post.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-text"><span style="color: rgb(49, 142, 255);">Blog</span> Portal</span>
+            </a>
+
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-outline">Войти</a>
+                <a href="register.html" class="btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="post-page">
+        <div class="post-container">
+            
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a>
+                <span>→</span>
+                <span>Загрузка...</span>
+            </div>
+
+            <div class="post-header">
+                <a href="#" class="post-category">...</a>
+                <h1 class="post-title">Загрузка...</h1>
+                <div class="post-meta">
+                    <div class="post-author">
+                        <div>
+                            <span class="post-author-name">...</span>
+                            <span class="post-date">...</span>
+                        </div>
+                    </div>
+                    <div class="post-tags"></div>
+                </div>
+                <div class="post-actions">
+                    <button id="btn-like" class="btn-like">🤍</button>
+                    <span id="like-count">0</span>
+                </div>
+            </div>
+
+            <img src="" alt="Обложка" class="post-cover" style="display:none;">
+
+            <div class="post-content">Загрузка...</div>
+
+            <div class="post-author-box">
+                <div>
+                    <span class="post-author-box-name"></span>
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="comments-section">
+            <h2 class="comments-title">Комментарии (0)</h2>
+
+            <form id="comment-form">
+                <div class="comment-form">
+                    <div class="comment-input-area">
+                        <input type="text" placeholder="Напишите комментарий..." class="comment-input">
+                        <button type="submit" class="comment-submit">Отправить</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="comments-list"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Blog Portal. Все права защищены.</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/post.js"></script>
+</body>
+</html>

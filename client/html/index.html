@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPortal - Главная</title>
+    <link rel="stylesheet" href="/client/css/index.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-text"><span style="color: rgb(49, 142, 255);">Blog</span> Portal</span>
+            </a>
+            
+            <nav class="index-nav">
+                <a href="index.html" class="nav-link-active">Главная</a>
+                <a href="categories.html" class="nav-link">Категории</a>
+                <a href="profile.html" class="nav-link">Профиль</a>
+            </nav>
+
+            <input type="text" placeholder="Поиск..." class="search-input">
+
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-outline">Войти</a>
+                <a href="register.html" class="btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="widget">
+                <div class="widget-title">📁 Категории</div>
+                <div class="category-list">
+                    <a href="index.html" class="category-item">
+                        <span>💻 Программирование</span>
+                        <span class="count">24</span>
+                    </a>
+                    <a href="index.html" class="category-item">
+                        <span>🎨 Дизайн</span>
+                        <span class="count">18</span>
+                    </a>
+                    <a href="index.html" class="category-item">
+                        <span>📱 Технологии</span>
+                        <span class="count">15</span>
+                    </a>
+                    <a href="index.html" class="category-item">
+                        <span>🔬 Наука</span>
+                        <span class="count">20</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">🏷 Популярные теги</div>
+                <div class="tags-cloud">
+                    <a href="search.html" class="tag">JavaScript</a>
+                    <a href="search.html" class="tag">Python</a>
+                    <a href="search.html" class="tag">React</a>
+                    <a href="search.html" class="tag">CSS</a>
+                    <a href="search.html" class="tag">HTML</a>
+                    <a href="search.html" class="tag">Node.js</a>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">🔥 Популярное</div>
+                <div class="popular-list">
+                    <a href="post.html" class="popular-item">
+                        <span class="popular-title">Как я выучил JavaScript за 6 месяцев</span>
+                        <span class="popular-views">👁 2.3k</span>
+                    </a>
+                    <a href="post.html" class="popular-item">
+                        <span class="popular-title">Топ 10 фишек ES6</span>
+                        <span class="popular-views">👁 1.8k</span>
+                    </a>
+                    <a href="post.html" class="popular-item">
+                        <span class="popular-title">React vs Vue: что выбрать?</span>
+                        <span class="popular-views">👁 1.5k</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <section class="main-content">
+            <div class="content-header">
+                <h1 class="section-title">Последние публикации</h1>
+                <div class="sort-buttons">
+                    <button class="btn-sort active">Новые</button>
+                    <button class="btn-sort">Популярные</button>
+                </div>
+            </div>
+
+            <h2 class="category-filter-title" style="display:none;"></h2>
+            <div class="articles">
+                
+                <article class="article-card">
+                    <div class="article-body">
+                        <div class="article-meta">
+                            <a href="index.html" class="article-category">Программирование</a>
+                            <span class="article-date">15 января 2026</span>
+                        </div>
+                        <a href="post.html" class="article-title">Как я выучил JavaScript за 6 месяцев</a>
+                        <p class="article-excerpt">История моего пути в программировании: от первых шагов до оффера. Рассказываю про ошибки и даю советы...</p>
+                        <div class="article-footer">
+                            <a href="profile.html" class="article-author">
+                                <span>Иван Петров</span>
+                            </a>
+                            <div class="article-stats">
+                                <span>👁 2.3k</span>
+                                <span>💬 45</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-body">
+                        <div class="article-meta">
+                            <a href="index.html" class="article-category">Дизайн</a>
+                            <span class="article-date">14 января 2026</span>
+                        </div>
+                        <a href="post.html" class="article-title">Основы UI/UX дизайна для начинающих</a>
+                        <p class="article-excerpt">Разбираем базовые принципы дизайна: цвета, типографика, композиция и работа с Figma...</p>
+                        <div class="article-footer">
+                            <a href="profile.html" class="article-author">
+                                <span>Анна Смирнова</span>
+                            </a>
+                            <div class="article-stats">
+                                <span>👁 1.8k</span>
+                                <span>💬 32</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-body">
+                        <div class="article-meta">
+                            <a href="index.html" class="article-category">Технологии</a>
+                            <span class="article-date">13 января 2026</span>
+                        </div>
+                        <a href="post.html" class="article-title">Искусственный интеллект в 2026 году</a>
+                        <p class="article-excerpt">Обзор достижений в области AI и машинного обучения. Как нейросети меняют нашу жизнь...</p>
+                        <div class="article-footer">
+                            <a href="profile.html" class="article-author">
+                                <span>Алексей Кодов</span>
+                            </a>
+                            <div class="article-stats">
+                                <span>👁 3.1k</span>
+                                <span>💬 67</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-body">
+                        <div class="article-meta">
+                            <a href="index.html" class="article-category">Наука</a>
+                            <span class="article-date">12 января 2026</span>
+                        </div>
+                        <a href="post.html" class="article-title">Новые открытия в квантовой физике</a>
+                        <p class="article-excerpt">Учёные сделали прорыв в понимании квантовых состояний. Что это значит для науки...</p>
+                        <div class="article-footer">
+                            <a href="profile.html" class="article-author">
+                                <span>Мария Учёная</span>
+                            </a>
+                            <div class="article-stats">
+                                <span>👁 1.1k</span>
+                                <span>💬 28</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-btn-disabled">←</a>
+                <a href="#" class="page-btn-active">1</a>
+                <a href="#" class="page-btn">2</a>
+                <a href="#" class="page-btn">3</a>
+                <a href="#" class="page-btn">→</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Blog Portal. Все права защищены.</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/index.js"></script>
+
+</body>
+</html>

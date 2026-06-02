@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* ==================== */
+/* HEADER                */
+/* ==================== */
+
+header {
+    background: #fff;
+    border-bottom: 1px solid rgb(134, 134, 134);
+    box-shadow: 0 2px 4px rgba(76, 76, 76, 0.1);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-outline {
+    color: rgb(49, 142, 255);
+    font-size: 14px;
+    border: 1px solid rgb(49, 142, 255);
+    border-radius: 5px;
+    padding: 6px 14px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: rgb(49, 142, 255);
+    color: #fff;
+}
+
+.btn-primary {
+    background: rgb(49, 142, 255);
+    border-radius: 5px;
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: rgb(30, 100, 200);
+}
+
+.btn-user {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 14px;
+    transition: color 0.3s ease;
+}
+
+.btn-user:hover {
+    color: #318eff;
+}
+
+/* ==================== */
+/* ПОИСК                 */
+/* ==================== */
+
+.search-page {
+    flex: 1;
+    padding: 30px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-input-big {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input-big:focus {
+    border-color: #318eff;
+}
+
+.search-btn {
+    padding: 12px 25px;
+    background: #318eff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background: rgb(30, 100, 200);
+}
+
+.search-result-text {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-result-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-result-card:hover {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.result-category {
+    display: inline-block;
+    background: #e8f4fd;
+    color: #318eff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    width: fit-content;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.result-category:hover {
+    background: #318eff;
+    color: #fff;
+}
+
+.result-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #222;
+    transition: color 0.3s ease;
+}
+
+.result-title:hover {
+    color: #318eff;
+}
+
+.result-excerpt {
+    font-size: 14px;
+    color: #666;
+}
+
+.result-date {
+    font-size: 12px;
+    color: #999;
+}
+
+.loading {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.no-results {
+    text-align: center;
+    color: #999;
+    padding: 30px;
+    font-size: 16px;
+}
+
+/* ==================== */
+/* FOOTER                */
+/* ==================== */
+
+footer {
+    background: #fff;
+    border-top: 1px solid rgb(134, 134, 134);
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 14px;
+    color: #888;
+}

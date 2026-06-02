@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPortal - Поиск</title>
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-text"><span style="color: rgb(49, 142, 255);">Blog</span> Portal</span>
+            </a>
+
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-outline">Войти</a>
+                <a href="register.html" class="btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-page">
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Поиск статей..." class="search-input-big">
+            <button class="search-btn">Найти</button>
+        </div>
+
+        <p class="search-result-text">Введите запрос для поиска</p>
+
+        <div class="search-results"></div>
+    </div>
+
+    <footer>
+        <p>© 2026 Blog Portal. Все права защищены.</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

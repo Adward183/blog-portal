@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* ==================== */
+/* HEADER                */
+/* ==================== */
+
+header {
+    background: #fff;
+    border-bottom: 1px solid rgb(134, 134, 134);
+    box-shadow: 0 2px 4px rgba(76, 76, 76, 0.1);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-outline {
+    color: rgb(49, 142, 255);
+    font-size: 14px;
+    border: 1px solid rgb(49, 142, 255);
+    border-radius: 5px;
+    padding: 6px 14px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: rgb(49, 142, 255);
+    color: #fff;
+}
+
+.btn-primary {
+    background: rgb(49, 142, 255);
+    border-radius: 5px;
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: rgb(30, 100, 200);
+}
+
+.btn-user {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 14px;
+    transition: color 0.3s ease;
+}
+
+.btn-user:hover {
+    color: #318eff;
+}
+
+.btn-write-header {
+    background: #e8f4fd;
+    color: #318eff;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-write-header:hover {
+    background: #318eff;
+    color: #fff;
+}
+
+.btn-moderation {
+    background: #fff3cd;
+    color: #856404;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-moderation:hover {
+    background: #ffc107;
+    color: #333;
+}
+
+/* ==================== */
+/* КАТЕГОРИИ             */
+/* ==================== */
+
+.categories-page {
+    flex: 1;
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 25px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.category-card-icon {
+    display: block;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.category-card-name {
+    display: block;
+    font-size: 17px;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+}
+
+.category-card-count {
+    display: block;
+    font-size: 13px;
+    color: #318eff;
+}
+
+.no-items {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    font-size: 16px;
+}
+
+/* ==================== */
+/* FOOTER                */
+/* ==================== */
+
+footer {
+    background: #fff;
+    border-top: 1px solid rgb(134, 134, 134);
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 14px;
+    color: #888;
+}
+

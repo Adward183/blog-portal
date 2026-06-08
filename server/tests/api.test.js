@@ -16,6 +16,14 @@ let userId = '';
 let postId = '';
 let commentId = '';
 
+beforeAll(async () => {
+    await db('likes').del();
+    await db('comments').del();
+    await db('tags').del();
+    await db('posts').del();
+    await db('users').where('email', 'like', '%@test.com').del();
+});
+
 describe('1. АВТОРИЗАЦИЯ', () => {
 
     test('Регистрация нового пользователя', async () => {

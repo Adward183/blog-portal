@@ -16,8 +16,19 @@ Backend: Node.js + Express
 user — читать статьи, комментировать, лайкать
 author — всё выше + писать статьи, отправлять на модерацию
 moderator — всё выше + одобрять/отклонять посты
-admin — всё выше + назначать роли
+admin — всё выше
+Назначение ролей:
 
+Роли назначаются администратором через базу данных.
+
+Через pgAdmin:
+1. Открыть pgAdmin → blogportal → Tables → users
+2. Правой кнопкой → View/Edit Data → All Rows
+3. Изменить поле role на нужное: user, author, moderator, admin
+4. Нажать Save
+
+Или через SQL запрос:
+UPDATE users SET role = 'author' WHERE email = 'user@example.com';
 
 ## Статусы постов
 

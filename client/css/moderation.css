@@ -242,3 +242,181 @@ footer {
     font-size: 14px;
     color: #888;
 }
+
+/* ==================== */
+/* mobile v      */
+/* ==================== */
+
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .main-layout {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .articles {
+        gap: 15px;
+    }
+
+    .article-card {
+        width: 100%;
+    }
+
+    .article-image {
+        height: 160px;
+    }
+
+    .article-title {
+        font-size: 17px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .search-input {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .auth-page {
+        padding: 20px 10px;
+    }
+
+    .auth-box {
+        padding: 25px 20px;
+    }
+
+    .post-page {
+        padding: 15px 10px;
+    }
+
+    .post-container {
+        padding: 20px 15px;
+    }
+
+    .post-title {
+        font-size: 22px;
+    }
+
+    .profile-page {
+        padding: 15px 10px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .editor-page {
+        padding: 15px 10px;
+    }
+
+    .editor-container {
+        padding: 20px 15px;
+    }
+
+    .editor-meta {
+        flex-direction: column;
+    }
+
+    .editor-header {
+        flex-direction: column;
+    }
+
+    .editor-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .editor-actions button,
+    .editor-actions a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .moderation-container {
+        padding: 15px 10px;
+    }
+
+    .moderation-actions {
+        flex-direction: column;
+    }
+
+    .moderation-actions button {
+        width: 100%;
+    }
+
+    .comments-section {
+        padding: 20px 15px;
+    }
+
+    .comment-form {
+        flex-direction: column;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .page-btn,
+    .page-btn-active,
+    .page-btn-disabled {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 450px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .article-body {
+        padding: 15px;
+    }
+
+    .post-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

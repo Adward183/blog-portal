@@ -43,20 +43,11 @@ router.get('/published', async (req, res) => {
 
         const posts = await query.clone()
             .select(
-                'posts.id',
-                'posts.title',
-                'posts.slug',
-                'posts.excerpt',
-                'posts.content',
-                'posts.category',
-                'posts.status',
-                'posts.featured_image',
-                'posts.view_count',
-                'posts.published_at',
-                'posts.created_at',
-                'posts.author_id',
-                'users.username as author_name',
-                'users.avatar as author_avatar'
+                'posts.id', 'posts.title', 'posts.slug', 'posts.excerpt',
+                'posts.content', 'posts.category', 'posts.status',
+                'posts.featured_image', 'posts.view_count',
+                'posts.published_at', 'posts.created_at', 'posts.author_id',
+                'users.username as author_name', 'users.avatar as author_avatar'
             )
             .orderBy(orderBy, orderDir)
             .limit(limit)
@@ -81,7 +72,7 @@ router.get('/published', async (req, res) => {
     }
 });
 
-// Получить все категории с количеством постов
+// Категории
 router.get('/categories/list', async (req, res) => {
     try {
         const categories = await db('posts')
@@ -171,7 +162,7 @@ router.post('/', authenticate, authorize('author', 'moderator', 'admin'), async 
             excerpt: excerpt || content.substring(0, 200),
             category,
             author_id: req.user.id,
-            featured_image: featuredImage || '',
+            featured_image: featuredImage || 'https://abrakadabra.fun/uploads/posts/2022-01/1641206099_7-abrakadabra-fun-p-interesnii-belii-fon-8.jpg',
             status: 'draft'
         }).returning('*');
 
@@ -295,7 +286,7 @@ router.delete('/:id', authenticate, async (req, res) => {
     }
 });
 
-// Лайкнуть пост
+// Лайк
 router.post('/:id/like', authenticate, async (req, res) => {
     try {
         const existing = await db('likes')
@@ -317,7 +308,7 @@ router.post('/:id/like', authenticate, async (req, res) => {
     }
 });
 
-// Проверить лайк
+// Статус лайка
 router.get('/:id/like', authenticate, async (req, res) => {
     try {
         const existing = await db('likes')

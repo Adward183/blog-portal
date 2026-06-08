@@ -55,8 +55,11 @@ async function loadProfile() {
             document.querySelector('.profile-bio').textContent = user.bio;
         }
 
+        const avatarEl = document.querySelector('.profile-avatar');
         if (user.avatar) {
-            document.querySelector('.profile-avatar').src = user.avatar;
+            avatarEl.src = user.avatar;
+        } else {
+            avatarEl.src = 'https://via.placeholder.com/150';
         }
 
         if (user.role === 'author' || user.role === 'moderator' || user.role === 'admin') {
@@ -81,8 +84,12 @@ async function loadPublicProfile(userId) {
         if (user.bio) {
             document.querySelector('.profile-bio').textContent = user.bio;
         }
+
+        const avatarEl = document.querySelector('.profile-avatar');
         if (user.avatar) {
-            document.querySelector('.profile-avatar').src = user.avatar;
+            avatarEl.src = user.avatar;
+        } else {
+            avatarEl.src = 'https://via.placeholder.com/150';
         }
 
         document.querySelector('.btn-write').style.display = 'none';
@@ -185,9 +192,7 @@ async function deletePost(postId) {
     if (!confirm('Удалить статью?')) return;
 
     try {
-        await apiRequest('/posts/' + postId, {
-            method: 'DELETE'
-        });
+        await apiRequest('/posts/' + postId, { method: 'DELETE' });
         showMessage('Статья удалена');
         loadMyPosts();
         loadStats();
@@ -223,19 +228,39 @@ document.getElementById('profile-edit-form').addEventListener('submit', async fu
 
     const username = document.getElementById('edit-username').value;
     const bio = document.getElementById('edit-bio').value;
-    const avatar = document.getElementById('edit-avatar').value;
+    const avatarUrlEl = document.getElementById('edit-avatar-url');
+    const avatarFileEl = document.getElementById('edit-avatar-file');
 
     try {
-        const user = await apiRequest('/auth/profile', {
-            method: 'PUT',
-            body: JSON.stringify({ username, bio, avatar })
-        });
+        let user;
+
+        if (avatarFileEl && avatarFileEl.files[0]) {
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('bio', bio);
+            formData.append('avatar', avatarFileEl.files[0]);
+
+            const token = localStorage.getItem('token');
+            const response = await fetch('http://localhost:5000/api/auth/profile', {
+                method: 'PUT',
+                headers: { 'Authorization': 'Bearer ' + token },
+                body: formData
+            });
+            user = await response.json();
+        } else {
+            const body = { username, bio };
+            if (avatarUrlEl && avatarUrlEl.value) {
+                body.avatar = avatarUrlEl.value;
+            }
+            user = await apiRequest('/auth/profile', {
+                method: 'PUT',
+                body: JSON.stringify(body)
+            });
+        }
 
         localStorage.setItem('user', JSON.stringify(user));
-
         document.getElementById('profile-view').style.display = 'block';
         document.getElementById('profile-edit').style.display = 'none';
-
         loadProfile();
         showMessage('Профиль обновлён');
     } catch (error) {

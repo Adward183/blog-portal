@@ -18,7 +18,7 @@
     <div class="profile-page">
         
         <div class="profile-header" id="profile-view">
-            <img src="" alt="Аватар" class="profile-avatar">
+            <img src="https://via.placeholder.com/100x100" alt="Аватар" class="profile-avatar">
             <div class="profile-info">
                 <span class="profile-name">...</span>
                 <span class="profile-email">...</span>
@@ -32,26 +32,26 @@
             </div>
         </div>
 
-        <div class="profile-header" id="profile-edit" style="display:none;">
-            <form id="profile-edit-form" style="width:100%;">
-                <div class="form-group">
-                    <label>Имя пользователя</label>
-                    <input type="text" id="edit-username" required>
-                </div>
-                <div class="form-group">
-                    <label>О себе</label>
-                    <input type="text" id="edit-bio" placeholder="Расскажите о себе">
-                </div>
-                <div class="form-group">
-                    <label>URL аватара</label>
-                    <input type="text" id="edit-avatar" placeholder="">
-                </div>
-                <div style="display:flex;gap:10px;">
-                    <button type="submit" class="btn-save">Сохранить</button>
-                    <button type="button" id="btn-cancel-edit" class="btn-cancel">Отмена</button>
-                </div>
-            </form>
+<div class="profile-header" id="profile-edit" style="display:none;">
+    <form id="profile-edit-form" style="width:100%;">
+        <div class="form-group">
+            <label>Имя пользователя</label>
+            <input type="text" id="edit-username" required>
         </div>
+        <div class="form-group">
+            <label>О себе</label>
+            <input type="text" id="edit-bio" placeholder="Расскажите о себе">
+        </div>
+        <div class="form-group">
+            <label>URL аватара</label>
+            <input type="text" id="edit-avatar-url" placeholder="https://...">
+        </div>
+        <div style="display:flex;gap:10px;">
+            <button type="submit" class="btn-save">Сохранить</button>
+            <button type="button" id="btn-cancel-edit" class="btn-cancel">Отмена</button>
+        </div>
+    </form>
+</div>
 
         <div class="profile-stats">
             <div class="stat-item">
@@ -59,7 +59,7 @@
                 <span class="stat-label">Статей</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number stat-views">0 </span>
+                <span class="stat-number stat-views">0</span>
                 <span class="stat-label">Просмотров</span>
             </div>
             <div class="stat-item">

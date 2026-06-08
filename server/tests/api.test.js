@@ -17,11 +17,17 @@ let postId = '';
 let commentId = '';
 
 beforeAll(async () => {
-    await db('likes').del();
-    await db('comments').del();
-    await db('tags').del();
-    await db('posts').del();
-    await db('users').where('email', 'like', '%@test.com').del();
+    const testUser = await db('users').where('email', 'testuser999@test.com').first();
+    if (testUser) {
+        await db('likes').where('user_id', testUser.id).del();
+        const testPosts = await db('posts').where('author_id', testUser.id);
+        for (let post of testPosts) {
+            await db('comments').where('post_id', post.id).del();
+            await db('tags').where('post_id', post.id).del();
+        }
+        await db('posts').where('author_id', testUser.id).del();
+        await db('users').where('id', testUser.id).del();
+    }
 });
 
 describe('1. АВТОРИЗАЦИЯ', () => {

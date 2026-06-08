@@ -10,13 +10,10 @@ router.post('/register', async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        const existing = await db('users')
-            .where({ email })
-            .orWhere({ username })
-            .first();
+        const existing = await db('users').where({ email }).first();
 
         if (existing) {
-            return res.status(400).json({ error: 'Пользователь уже существует' });
+            return res.status(400).json({ error: 'Пользователь с таким email уже существует' });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -26,7 +23,8 @@ router.post('/register', async (req, res) => {
             username,
             email,
             password: hashedPassword,
-            role: 'user'
+            role: 'user',
+            avatar: 'https://raw.githubusercontent.com/itchief/modx-solutions/main/Login/04-upload-photo/01-default.svg'
         }).returning(['id', 'username', 'email', 'role', 'avatar', 'bio', 'created_at']);
 
         const token = jwt.sign({ userId: result.id }, process.env.JWT_SECRET, { expiresIn: '30d' });
@@ -67,39 +65,33 @@ router.get('/me', authenticate, async (req, res) => {
     res.json(req.user);
 });
 
-// Публичный профиль пользователя
-router.get('/profile/:id', async (req, res) => {
+// Обновить профиль
+router.put('/profile', authenticate, async (req, res) => {
     try {
-        const user = await db('users')
-            .where({ id: req.params.id })
-            .select('id', 'username', 'avatar', 'bio', 'role', 'created_at')
-            .first();
+        const { username, bio, avatar } = req.body;
 
-        if (!user) {
-            return res.status(404).json({ error: 'Пользователь не найден' });
+        const updateData = {};
+        if (username) updateData.username = username;
+        if (bio !== undefined) updateData.bio = bio;
+        if (avatar) updateData.avatar = avatar;
+
+        if (Object.keys(updateData).length === 0) {
+            return res.status(400).json({ error: 'Нет данных для обновления' });
         }
 
-        const postsCount = await db('posts')
-            .where({ author_id: user.id, status: 'published' })
-            .count('id as count')
-            .first();
+        const updated = await db('users')
+            .where({ id: req.user.id })
+            .update(updateData)
+            .returning(['id', 'username', 'email', 'role', 'avatar', 'bio', 'created_at']);
 
-        const posts = await db('posts')
-            .where({ author_id: user.id, status: 'published' })
-            .orderBy('published_at', 'desc')
-            .limit(10);
-
-        res.json({
-            user,
-            postsCount: parseInt(postsCount.count),
-            posts
-        });
+        res.json(updated[0]);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: 'Ошибка сервера' });
     }
 });
 
-// Статистика пользователя
+// Статистика
 router.get('/stats', authenticate, async (req, res) => {
     try {
         const postsCount = await db('posts')
@@ -127,25 +119,32 @@ router.get('/stats', authenticate, async (req, res) => {
     }
 });
 
-router.put('/profile', authenticate, async (req, res) => {
+// Публичный профиль
+router.get('/profile/:id', async (req, res) => {
     try {
-        const { username, bio, avatar } = req.body;
+        const user = await db('users')
+            .where({ id: req.params.id })
+            .select('id', 'username', 'avatar', 'bio', 'role', 'created_at')
+            .first();
 
-        const updated = await db('users')
-            .where({ id: req.user.id })
-            .update({
-                username: username || req.user.username,
-                bio: bio !== undefined ? bio : req.user.bio,
-                avatar: avatar !== undefined ? avatar : req.user.avatar
-            })
-            .returning(['id', 'username', 'email', 'role', 'avatar', 'bio', 'created_at']);
+        if (!user) {
+            return res.status(404).json({ error: 'Пользователь не найден' });
+        }
 
-        res.json(updated[0]);
+        const postsCount = await db('posts')
+            .where({ author_id: user.id, status: 'published' })
+            .count('id as count')
+            .first();
+
+        const posts = await db('posts')
+            .where({ author_id: user.id, status: 'published' })
+            .orderBy('published_at', 'desc')
+            .limit(10);
+
+        res.json({ user, postsCount: parseInt(postsCount.count), posts });
     } catch (error) {
         res.status(500).json({ error: 'Ошибка сервера' });
     }
 });
 
-
 module.exports = router;
-

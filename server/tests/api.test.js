@@ -19,12 +19,13 @@ let commentId = '';
 beforeAll(async () => {
     const testUser = await db('users').where('email', 'testuser999@test.com').first();
     if (testUser) {
-        await db('likes').where('user_id', testUser.id).del();
         const testPosts = await db('posts').where('author_id', testUser.id);
         for (let post of testPosts) {
+            await db('likes').where('post_id', post.id).del();
             await db('comments').where('post_id', post.id).del();
             await db('tags').where('post_id', post.id).del();
         }
+        await db('likes').where('user_id', testUser.id).del();
         await db('posts').where('author_id', testUser.id).del();
         await db('users').where('id', testUser.id).del();
     }

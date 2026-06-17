@@ -1,42 +1,65 @@
 # Blog Portal
 
-Платформа для публикации статей с модерацией.
+Новостной портал с модерацией на Node.js + PostgreSQL.
+
+Авторы пишут статьи, модераторы проверяют и публикуют, читатели комментируют и оценивают.
 
 
-## Стек
+## Стек технологий
 
 Backend: Node.js + Express
-База данных: PostgreSQL + Knex
-Аутентификация: JWT
+База данных: PostgreSQL + Knex.js
+Аутентификация: JWT + bcrypt
 Фронтенд: HTML, CSS, JavaScript
+Тестирование: Jest + Supertest
 
 
-## Роли
+## Роли пользователей
 
-user — читать статьи, комментировать, лайкать
-author — всё выше + писать статьи, отправлять на модерацию
-moderator — всё выше + одобрять/отклонять посты
-admin — всё выше + назначать роли
+user — читать статьи, комментировать, ставить лайки
+author — всё выше + создавать и редактировать статьи, отправлять на модерацию
+moderator — всё выше + одобрять/отклонять посты, удалять любые посты
+admin — всё выше + назначать роли через базу данных
 
 
 ## Статусы постов
 
-draft — черновик
-review — на проверке
-published — опубликован
+draft — черновик, виден только автору
+review — на проверке, виден модератору
+published — опубликован, виден всем
+
+
+## Схема базы данных
+
+5 таблиц: users, posts, tags, comments, likes.
+
+Связи:
+- posts.author_id ссылается на users.id
+- tags.post_id ссылается на posts.id
+- comments.author_id ссылается на users.id
+- comments.post_id ссылается на posts.id
+- likes.user_id ссылается на users.id
+- likes.post_id ссылается на posts.id
 
 
 ## Установка и запуск
 
-1. Установить PostgreSQL с postgresql.org
-2. Создать базу данных blogportal через pgAdmin
+### 1. Клонировать проект
 
-3. Перейти в папку server и установить зависимости:
+git clone https://github.com/Adward183/blog-portal.git
+cd blog-portal
 
-- cd server
-- npm install
+### 2. Установить PostgreSQL
 
-4. Создать файл .env в папке server:
+Скачать с postgresql.org и установить.
+Создать базу данных blogportal через pgAdmin.
+
+### 3. Настроить сервер
+
+cd server
+npm install
+
+Создать файл .env:
 
 PORT=5000
 DB_HOST=localhost
@@ -46,77 +69,84 @@ DB_PASSWORD=ваш_пароль
 DB_NAME=blogportal
 JWT_SECRET=blog_portal_secret_key
 
-5. Создать таблицы:
+### 4. Создать таблицы
 
 npx knex migrate:latest --knexfile knexfile.js
 
-6. Запустить сервер:
+### 5. Заполнить тестовыми данными (опционально)
+
+npx knex seed:run --knexfile knexfile.js
+
+Тестовые пользователи (пароль у всех 123456):
+- admin@blog.com (admin)
+- moder@blog.com (moderator)
+- author@blog.com (author)
+- reader@blog.com (user)
+
+### 6. Запустить сервер
 
 npm run dev
 
-7. Открыть client/html/index.html через Live Server
+Сервер запустится на http://localhost:5000
+
+### 7. Открыть фронтенд
+
+Открыть client/html/index.html через Live Server.
 
 
-## API
+## API (22 эндпоинта)
 
-Регистрация
-POST /api/auth/register
+### Авторизация
 
-Вход
-POST /api/auth/login
+POST /api/auth/register — регистрация
+POST /api/auth/login — вход
+GET /api/auth/me — текущий пользователь (авторизованные)
+PUT /api/auth/profile — обновить профиль (авторизованные)
+GET /api/auth/stats — статистика пользователя (авторизованные)
+GET /api/auth/profile/:id — публичный профиль
 
-Профиль
-GET /api/auth/me
-PUT /api/auth/profile
-GET /api/auth/stats
-GET /api/auth/profile/:id
+### Посты
 
-Посты
-GET /api/posts/published
-GET /api/posts/categories/list
-GET /api/posts/my/all
-GET /api/posts/review/all
-GET /api/posts/:id
-POST /api/posts
-PUT /api/posts/:id
-PATCH /api/posts/:id/submit
-PATCH /api/posts/:id/moderate
-DELETE /api/posts/:id
-POST /api/posts/:id/like
-GET /api/posts/:id/like
+GET /api/posts/published — опубликованные посты
+  Параметры: page, limit, category, search, tag, sort
+GET /api/posts/categories/list — список категорий
+GET /api/posts/my/all — мои посты (авторизованные)
+GET /api/posts/review/all — посты на модерации (moderator+)
+GET /api/posts/:id — один пост
+POST /api/posts — создать пост (author+)
+PUT /api/posts/:id — обновить пост (автор)
+PATCH /api/posts/:id/submit — отправить на модерацию (author+)
+PATCH /api/posts/:id/moderate — модерировать пост (moderator+)
+DELETE /api/posts/:id — удалить пост (автор или moderator+)
+POST /api/posts/:id/like — лайкнуть пост (авторизованные)
+GET /api/posts/:id/like — статус лайка (авторизованные)
 
-Комментарии
-GET /api/comments/:postId
-POST /api/comments/:postId
-PUT /api/comments/:id
-DELETE /api/comments/:id
+### Комментарии
 
-
-## Параметры запросов
-
-Посты с пагинацией:
-GET /api/posts/published?page=1&limit=3
-
-Поиск:
-GET /api/posts/published?search=текст
-
-Фильтр по категории:
-GET /api/posts/published?category=Программирование
-
-Фильтр по тегу:
-GET /api/posts/published?tag=JavaScript
-
-Сортировка:
-GET /api/posts/published?sort=popular
-
+GET /api/comments/:postId — комментарии к посту
+POST /api/comments/:postId — создать комментарий (авторизованные)
+PUT /api/comments/:id — редактировать комментарий (автор)
+DELETE /api/comments/:id — удалить комментарий (автор)
 
 ## Скриншоты
 
-Главная страница
-Страница поста
-Профиль
-Редактор
-Модерация
+### Главная страница
+![Главная](screen/main.png)
+
+### Страница поста
+![Пост](screen/post.png)
+
+### Профиль
+![Профиль](screen/profile.png)
+
+### Редактор
+![Редактор](screen/editor.png)
+
+### Модерация
+![Модерация](screen/moderation.png)
+
+### Поиск
+![Поиск](screen/ssearch.png)
 
 
 ## Тесты
@@ -125,4 +155,24 @@ GET /api/posts/published?sort=popular
 
 npm test
 
-16 тестов: регистрация, вход, публикация, комментарии, фильтрация, пагинация.
+16 тестов в 4 группах:
+- Авторизация (регистрация, вход, неверный пароль)
+- Публикация (создание, модерация, получение)
+- Комментарии (создание, получение, редактирование, удаление)
+- Фильтрация и поиск (поиск, категории, теги, сортировка, пагинация)
+
+
+## Структура проекта
+
+blog-portal/
+├── client/                  # Фронтенд
+│   ├── html/               # 10 HTML страниц
+│   ├── css/                # 9 CSS файлов
+│   └── js/                 # 10 JS файлов
+├── server/                  # Бэкенд
+│   ├── routes/             # Маршруты API
+│   ├── middleware/         # Проверка JWT и ролей
+│   ├── migrations/         # Миграции БД
+│   ├── seeds/              # Тестовые данные
+│   └── tests/              # Автотесты
+└── README.md
